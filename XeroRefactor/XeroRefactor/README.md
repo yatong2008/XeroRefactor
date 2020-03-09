@@ -7,6 +7,10 @@
 5. Add UnitTests projects using xUnit, NSubstitute
 6. Create Postman tests, save collection.
 
+To run the tests, in the solution directory:
+dotnet test
+To run the project, in the solution directory:
+dotnet run --project .\XeroRefactor\XeroRefactor.csproj
 
 
 # refactor-this
