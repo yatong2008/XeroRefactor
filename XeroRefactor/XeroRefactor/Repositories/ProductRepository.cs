@@ -52,6 +52,11 @@ namespace XeroRefactor.Repositories
 
                 await _context.SaveChangesAsync();
             }
+            else
+            {
+                throw new ObjectNotFoundException($"Product with id '{id}' not found");
+
+            }
         }
 
         public async Task<Product> CreateProductAsync(Product product)

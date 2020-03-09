@@ -4,6 +4,7 @@ using System.Linq;
 using MockQueryable.NSubstitute;
 using NSubstitute;
 using XeroRefactor.Data;
+using XeroRefactor.Exceptions;
 using XeroRefactor.Models;
 using XeroRefactor.Repositories;
 using Xunit;
@@ -93,7 +94,6 @@ namespace XeroRefactorUnitTests
             //Arrange
             var productId = Guid.Parse("8f2e9176-35ee-4f0a-ae55-83023d2db1a3");
 
-
             //Act
             var results = await _productOptionRepository.GetProductOptions(productId);
 
@@ -116,7 +116,6 @@ namespace XeroRefactorUnitTests
             var result = await _productOptionRepository.GetProductOption(productId, id);
 
             //Assert
-            //_context.ProductOptions?.Received(1).FirstOrDefault(x => x.ProductId == productId && x.Id == id);
 
             Assert.Equal(Guid.Parse("0643ccf0-ab00-4862-b3c5-40e2731abcc9"), result.Id);
             Assert.Equal(Guid.Parse("8f2e9176-35ee-4f0a-ae55-83023d2db1a3"), result.ProductId);
@@ -143,6 +142,27 @@ namespace XeroRefactorUnitTests
 
             //Assert
             _context.ProductOptions.Received(1).Add(Arg.Is<ProductOption>(x => x.ProductId == productId));
+
+        }
+
+
+        [Fact]
+        public async System.Threading.Tasks.Task RepositoryCreateProductOptionWithAnInvalidProductId_Should_ThrowAnObjectNotFoundException()
+        {
+            //Arrange
+            var productId = Guid.Parse("8f2e9176-35ff-4f0a-ae55-83023d2db1a3");
+
+            ProductOption productOption = new ProductOption
+            {
+                ProductId = productId,
+                Name = "Red",
+                Description = "Red Samsung Galaxy S7"
+            };
+            //Act
+
+
+            //Assert
+            await Assert.ThrowsAsync<ObjectNotFoundException>(() => _productOptionRepository.CreateProductOption(productOption));
 
         }
 

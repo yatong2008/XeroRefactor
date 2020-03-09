@@ -4,6 +4,7 @@ using System.Linq;
 using MockQueryable.NSubstitute;
 using NSubstitute;
 using XeroRefactor.Data;
+using XeroRefactor.Exceptions;
 using XeroRefactor.Models;
 using XeroRefactor.Repositories;
 using Xunit;
@@ -161,9 +162,21 @@ namespace XeroRefactorUnitTests
             _context.ProductOptions.Remove(Arg.Is<ProductOption>(x => x.Id == productOptionId1));
             _context.ProductOptions.Remove(Arg.Is<ProductOption>(x => x.Id == productOptionId2));
         }
-        
-        
-        
+
+        [Fact]
+        public async void ProductServiceDeleteAProductWithAnInvalidId_ShouldCall_ThrowAnObjectNotFoundException()
+        {
+            //Arrange
+            var productId = Guid.Parse("00000000-0000-0000-0000-000000000000");
+
+            //Act
+
+            //Assert
+            await Assert.ThrowsAsync<ObjectNotFoundException>(async () => await _productRepository.DeleteProduct(productId));
+
+        }
+
+
         [Fact]
         public async void UpdateProduct_Should_ReceiveAUpdateProductCall()
         {
