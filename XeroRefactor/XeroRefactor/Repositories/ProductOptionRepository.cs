@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using XeroRefactor.Data;
+using XeroRefactor.Exceptions;
 using XeroRefactor.Models;
 
 namespace XeroRefactor.Repositories
@@ -21,7 +22,7 @@ namespace XeroRefactor.Repositories
         {
             if (!ProductExists(productId))
             {
-                throw new Exception("Product [" + productId + "] not found");
+                throw new ObjectNotFoundException($"Product with id '{productId}' not found");
             }
             return await _context.ProductOptions
                 .Where(x => x.ProductId == productId)
@@ -32,7 +33,7 @@ namespace XeroRefactor.Repositories
         {
             if (!ProductExists(productId))
             {
-                throw new Exception("Product [" + productId + "] not found");
+                throw new ObjectNotFoundException($"Product with id '{productId}' not found");
             }
             return await _context.ProductOptions.FirstOrDefaultAsync(x => x.ProductId == productId && x.Id == id);
         }
@@ -41,7 +42,7 @@ namespace XeroRefactor.Repositories
         {
             if (!ProductExists(productOption.ProductId))
             {
-                throw new Exception("Product [" + productOption.ProductId + "] not found");
+                throw new ObjectNotFoundException($"Product with id '{productOption.ProductId}' not found");
             }
             _context.ProductOptions.Add(productOption);
             await _context.SaveChangesAsync();
@@ -52,11 +53,11 @@ namespace XeroRefactor.Repositories
         {
             if (!ProductExists(productOption.ProductId))
             {
-                throw new Exception("Product [" + productOption.ProductId + "] not found");
+                throw new ObjectNotFoundException($"Product with id '{productOption.ProductId}' not found");
             }
             if (!ProductOptionExists(productOption.Id))
             {
-                throw new Exception("ProductOption [" + productOption.Id + "] not found");
+                throw new ObjectNotFoundException($"ProductOption with id '{productOption.ProductId}' not found");
             }
             
             _context.ProductOptions.Update(productOption);

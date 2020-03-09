@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using XeroRefactor.Exceptions;
 using XeroRefactor.Models;
 using XeroRefactor.Services;
 
@@ -37,11 +38,14 @@ namespace XeroRefactor.Controllers
                     Items = await _productService.GetAllByNameAsync(name)
                 });
             }
-            catch (Exception e)
+            catch (ObjectNotFoundException e)
             {
                 return NotFound(e.Message);
             }
-            
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
 
         [HttpGet("{id}")]
@@ -52,9 +56,13 @@ namespace XeroRefactor.Controllers
                 var product = await _productService.GetByIdAsync(id);
                 return Ok(product);
             }
-            catch (Exception e)
+            catch (ObjectNotFoundException e)
             {
                 return NotFound(e.Message);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
             }
         }
 
@@ -81,7 +89,7 @@ namespace XeroRefactor.Controllers
                 await _productService.DeleteAsync(id);
                 return NoContent();
             }
-            catch (Exception e)
+            catch (ObjectNotFoundException e)
             {
                 return BadRequest(e.Message);
             }
@@ -99,7 +107,7 @@ namespace XeroRefactor.Controllers
                 };
                 return Ok(productOptions);
             }
-            catch (Exception e)
+            catch (ObjectNotFoundException e)
             {
                 return NotFound(e.Message);
             }
@@ -114,7 +122,7 @@ namespace XeroRefactor.Controllers
                 var productOption = await _productOptionService.GetByProductOptionIdAsync(productId, id);
                 return Ok(productOption);
             }
-            catch (Exception e)
+            catch (ObjectNotFoundException e)
             {
                 return NotFound(e.Message);
             }
@@ -128,7 +136,7 @@ namespace XeroRefactor.Controllers
                 await _productOptionService.AddAsync(productId, option);
                 return Ok(option);
             }
-            catch (Exception e)
+            catch (ObjectNotFoundException e)
             {
                 return BadRequest(e.Message);
             }
@@ -142,7 +150,7 @@ namespace XeroRefactor.Controllers
                 await _productOptionService.UpdateAsync(id, option);
                 return NoContent();
             }
-            catch (Exception e)
+            catch (ObjectNotFoundException e)
             {
                 return BadRequest(e.Message);
             }
@@ -156,7 +164,7 @@ namespace XeroRefactor.Controllers
                 await _productOptionService.DeleteAsync(productId, id);
                 return NoContent();
             }
-            catch (Exception e)
+            catch (ObjectNotFoundException e)
             {
                 return BadRequest(e.Message);
             }

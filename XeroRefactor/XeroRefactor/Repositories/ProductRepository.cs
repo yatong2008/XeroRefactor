@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using XeroRefactor.Data;
+using XeroRefactor.Exceptions;
 using XeroRefactor.Models;
 
 namespace XeroRefactor.Repositories
@@ -27,7 +28,7 @@ namespace XeroRefactor.Repositories
             var product = await _context.Products.FirstOrDefaultAsync(x => x.Id == id);
             if (product == null)
             {
-                throw new Exception("Product [" + id + "] not found");
+                throw new ObjectNotFoundException($"Product with id '{id}' not found");
             }
             return product;
         }
@@ -64,7 +65,7 @@ namespace XeroRefactor.Repositories
         {
             if (!ProductExists(product.Id))
             {
-                throw new Exception("Product with id [" + product.Id + "] not found");
+                throw new ObjectNotFoundException($"Product with id '{product.Id}' not found");
             }
 
             _context.Products.Update(product);
