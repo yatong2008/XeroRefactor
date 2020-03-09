@@ -1,0 +1,316 @@
+{
+	"info": {
+		"_postman_id": "baee7001-3dee-40bb-b034-2fa5fca526c4",
+		"name": "Xero API Refactor",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "gets all products.",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44335/api/products",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44335",
+					"path": [
+						"api",
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "finds all products matching the specified name \"samsung\"",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44335/api/products?name=samsung",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44335",
+					"path": [
+						"api",
+						"products"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "samsung"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "gets the project that matches the specified ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44335/api/products/8f2e9176-35ee-4f0a-ae55-83023d2db1a3",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44335",
+					"path": [
+						"api",
+						"products",
+						"8f2e9176-35ee-4f0a-ae55-83023d2db1a3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "creates a new product",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Samsung Galaxy S20 Ultra\",\n\t\"description\": \"Say hello to a whole new way of seeing. Galaxy S20 Ultra 5G features a 108MP camera, 100x zoom lens, the world’s first smartphone with 8K video recording at 24fps, advanced design and seriously fast 5G.\",\n\t\"price\": 1999,\n\t\"deliveryPrice\": 19.99\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44335/api/products",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44335",
+					"path": [
+						"api",
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updates a product.",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"id\": \"8f2e9176-35ee-4f0a-ae55-83023d2db1a3\",\n    \"name\": \"Samsung Galaxy S7\",\n    \"description\": \"Best 2017 mobile product from Samsung.\",\n    \"price\": 999.99,\n    \"deliveryPrice\": 9.99\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44335/api/products/8f2e9176-35ee-4f0a-ae55-83023d2db1a3",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44335",
+					"path": [
+						"api",
+						"products",
+						"8f2e9176-35ee-4f0a-ae55-83023d2db1a3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deletes a product and its options.",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44335/api/products/8f2e9176-35ee-4f0a-ae55-83023d2db1a3",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44335",
+					"path": [
+						"api",
+						"products",
+						"8f2e9176-35ee-4f0a-ae55-83023d2db1a3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "finds all options for a specified product.",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44335/api/products/8f2e9176-35ee-4f0a-ae55-83023d2db1a3/options",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44335",
+					"path": [
+						"api",
+						"products",
+						"8f2e9176-35ee-4f0a-ae55-83023d2db1a3",
+						"options"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "finds the specified product option for the specified product.",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44335/api/products/8f2e9176-35ee-4f0a-ae55-83023d2db1a3/options/0643ccf0-ab00-4862-b3c5-40e2731abcc9",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44335",
+					"path": [
+						"api",
+						"products",
+						"8f2e9176-35ee-4f0a-ae55-83023d2db1a3",
+						"options",
+						"0643ccf0-ab00-4862-b3c5-40e2731abcc9"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "adds a new product option to the specified product.",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"productId\": \"8f2e9176-35ee-4f0a-ae55-83023d2db1a3\",\r\n  \"name\": \"Red\",\r\n  \"description\": \"Red Samsung Galaxy S7\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44335/api/products/8f2e9176-35ee-4f0a-ae55-83023d2db1a3/options",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44335",
+					"path": [
+						"api",
+						"products",
+						"8f2e9176-35ee-4f0a-ae55-83023d2db1a3",
+						"options"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updates the specified product option.",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": \"a21d5777-a655-4020-b431-624bb331e9a2\",\r\n    \"productId\": \"8f2e9176-35ee-4f0a-ae55-83023d2db1a3\",\r\n    \"name\": \"Grey\",\r\n    \"description\": \"Grey Samsung Galaxy S7\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44335/api/products/8f2e9176-35ee-4f0a-ae55-83023d2db1a3/options/a21d5777-a655-4020-b431-624bb331e9a2",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44335",
+					"path": [
+						"api",
+						"products",
+						"8f2e9176-35ee-4f0a-ae55-83023d2db1a3",
+						"options",
+						"a21d5777-a655-4020-b431-624bb331e9a2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deletes the specified product option.",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44335/api/products/8f2e9176-35ee-4f0a-ae55-83023d2db1a3/options/a21d5777-a655-4020-b431-624bb331e9a2",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44335",
+					"path": [
+						"api",
+						"products",
+						"8f2e9176-35ee-4f0a-ae55-83023d2db1a3",
+						"options",
+						"a21d5777-a655-4020-b431-624bb331e9a2"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
