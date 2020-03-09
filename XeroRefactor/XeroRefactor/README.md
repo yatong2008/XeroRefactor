@@ -1,3 +1,14 @@
+#refactor note
+
+1. Add EntityFramework Core for Sqlite, Add Interface for DBContext
+2. Add Repositories
+3. Add Services Layer
+4. Refactor Models, remove used field such as `IsNew`
+5. Add UnitTests projects using xUnit, NSubstitute
+6. Create Postman tests, save collection.
+
+
+
 # refactor-this
 The attached project is a poorly written products API in C#.
 
