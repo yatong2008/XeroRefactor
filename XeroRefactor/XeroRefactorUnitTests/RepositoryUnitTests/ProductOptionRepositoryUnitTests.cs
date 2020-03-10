@@ -9,7 +9,7 @@ using XeroRefactor.Models;
 using XeroRefactor.Repositories;
 using Xunit;
 
-namespace XeroRefactorUnitTests
+namespace XeroRefactorUnitTests.RepositoryUnitTests
 {
     public class ProductOptionRepositoryUnitTests
     {
@@ -205,6 +205,19 @@ namespace XeroRefactorUnitTests
 
             //Assert
             _context.ProductOptions.Received(1).Remove(Arg.Is<ProductOption>(x => x.Id == id && x.ProductId == productId));
+        }
+
+        [Fact]
+        public async void RepositoryDeleteProductOptionWithAnInvalidId_ShouldCall_ThrowAnObjectNotFoundException()
+        {
+            //Arrange
+            var productId = Guid.Parse("00000000-0000-0000-0000-000000000000");
+            var id = Guid.Parse("00000000-0000-0000-0000-000000000000");
+            
+            //Act
+
+            //Assert
+            await Assert.ThrowsAsync<ObjectNotFoundException>(async () => await _productOptionRepository.DeleteProductOption(productId, id));
         }
     }
 }

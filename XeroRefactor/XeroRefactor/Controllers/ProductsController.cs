@@ -77,8 +77,15 @@ namespace XeroRefactor.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(Guid id, Product product)
         {
-            await _productService.UpdateAsync(product);
-            return NoContent();
+            try
+            {
+                await _productService.UpdateAsync(product);
+                return NoContent();
+            }
+            catch (ObjectNotFoundException e)
+            {
+                return NotFound(e.Message);
+            }
         }
 
         [HttpDelete("{id}")]

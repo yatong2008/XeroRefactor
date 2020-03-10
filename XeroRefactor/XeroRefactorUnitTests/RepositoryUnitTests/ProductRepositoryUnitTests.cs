@@ -9,7 +9,7 @@ using XeroRefactor.Models;
 using XeroRefactor.Repositories;
 using Xunit;
 
-namespace XeroRefactorUnitTests
+namespace XeroRefactorUnitTests.RepositoryUnitTests
 {
     public class ProductRepositoryUnitTests
     {
@@ -116,7 +116,7 @@ namespace XeroRefactorUnitTests
 
             foreach (var result in results)
             {
-                Assert.True(result.Name.Contains(keyword));
+                Assert.Contains(keyword, result.Name);
             }
         }
 

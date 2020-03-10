@@ -5,7 +5,7 @@ using XeroRefactor.Repositories;
 using XeroRefactor.Services;
 using Xunit;
 
-namespace XeroRefactorUnitTests
+namespace XeroRefactorUnitTests.ServiceUnitTests
 {
     public class ProductServiceUnitTests
     {

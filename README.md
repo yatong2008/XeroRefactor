@@ -7,11 +7,22 @@
 5. Add UnitTests projects using xUnit, NSubstitute
 6. Create Postman tests, save collection.
 
+# Development Tools & Environment
+
+**Visual Studio Community 2019** for the development tools on Windows 10 machine.
+
+# .Net Core Version
+
+**.Net Core 3.1**
+
 Run steps:
 
 - dotnet test
-
 - dotnet run --project .\XeroRefactor\XeroRefactor.csproj
+
+Or 
+- Open the solution in VS2019 
+- Launch the application by clicking Start
 
 - Install Postman and import collection: Xero API Refactor.postman_collection.json
 

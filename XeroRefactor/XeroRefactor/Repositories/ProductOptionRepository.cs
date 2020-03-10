@@ -76,6 +76,10 @@ namespace XeroRefactor.Repositories
                     await _context.SaveChangesAsync();
                 }
             }
+            else
+            {
+                throw new ObjectNotFoundException($"ProductOption with id '{id}' not found");
+            }
         }
 
         private bool ProductExists(Guid id)

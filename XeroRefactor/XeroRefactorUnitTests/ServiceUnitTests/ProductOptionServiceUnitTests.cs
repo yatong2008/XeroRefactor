@@ -1,11 +1,12 @@
 ﻿using System;
 using NSubstitute;
+using XeroRefactor.Exceptions;
 using XeroRefactor.Models;
 using XeroRefactor.Repositories;
 using XeroRefactor.Services;
 using Xunit;
 
-namespace XeroRefactorUnitTests
+namespace XeroRefactorUnitTests.ServiceUnitTests
 {
     public class ProductOptionServiceUnitTests
     {
@@ -99,7 +100,6 @@ namespace XeroRefactorUnitTests
             //Assert
             await _productOptionRepository.Received(1).DeleteProductOption(productId, id);
         }
-
 
     }
 }
