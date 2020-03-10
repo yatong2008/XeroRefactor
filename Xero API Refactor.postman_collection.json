@@ -73,6 +73,27 @@
 			"response": []
 		},
 		{
+			"name": "gets the project that matches the specified Invalid Giud, shoud return 404 NotFound",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44335/api/products/8f2e9176-35ee-4f0a-ae55-83023d2db1aa",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44335",
+					"path": [
+						"api",
+						"products",
+						"8f2e9176-35ee-4f0a-ae55-83023d2db1aa"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "creates a new product",
 			"request": {
 				"method": "POST",
@@ -146,6 +167,43 @@
 			"response": []
 		},
 		{
+			"name": "updates a product with an invalid Guid",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"id\": \"8f2e9176-35ee-4f0a-ae55-83023d2db1aa\",\n    \"name\": \"Samsung Galaxy S7\",\n    \"description\": \"Best 2017 mobile product from Samsung.\",\n    \"price\": 999.99,\n    \"deliveryPrice\": 9.99\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44335/api/products/8f2e9176-35ee-4f0a-ae55-83023d2db1aa",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44335",
+					"path": [
+						"api",
+						"products",
+						"8f2e9176-35ee-4f0a-ae55-83023d2db1aa"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "deletes a product and its options.",
 			"request": {
 				"method": "DELETE",
@@ -161,6 +219,27 @@
 						"api",
 						"products",
 						"8f2e9176-35ee-4f0a-ae55-83023d2db1a3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deletes a product and its options with invalid Guid, BadRequest",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44335/api/products/8f2e9176-35ee-4f0a-ae55-83023d2db1aa",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44335",
+					"path": [
+						"api",
+						"products",
+						"8f2e9176-35ee-4f0a-ae55-83023d2db1aa"
 					]
 				}
 			},
@@ -290,6 +369,29 @@
 		},
 		{
 			"name": "deletes the specified product option.",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44335/api/products/8f2e9176-35ee-4f0a-ae55-83023d2db1a3/options/a21d5777-a655-4020-b431-624bb331e9a2",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44335",
+					"path": [
+						"api",
+						"products",
+						"8f2e9176-35ee-4f0a-ae55-83023d2db1a3",
+						"options",
+						"a21d5777-a655-4020-b431-624bb331e9a2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deletes the specified product option with invalid Guid, BadRequest",
 			"request": {
 				"method": "DELETE",
 				"header": [],
